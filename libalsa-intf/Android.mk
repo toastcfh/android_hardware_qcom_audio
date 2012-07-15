@@ -1,6 +1,11 @@
 LOCAL_PATH:= $(call my-dir)
 
 ifeq ($(BOARD_USES_ALSA_AUDIO),true)
+
+# hack for prebuilt libacdbloader (ifdef?)
+$(shell mkdir -p $(OUT)/obj/SHARED_LIBRARIES/libacdbloader_intermediates/)
+$(shell touch $(OUT)/obj/SHARED_LIBRARIES/libacdbloader_intermediates/export_includes)
+
 # Any prebuilt files with default TAGS can use the below:
 include $(CLEAR_VARS)
 LOCAL_MODULE       := snd_soc_msm
