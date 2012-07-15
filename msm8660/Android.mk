@@ -1,6 +1,3 @@
-ifneq ($(BUILD_TINY_ANDROID),true)
-ifeq ($(strip $(QC_PROP)),true)
-
 #AUDIO_POLICY_TEST := true
 #ENABLE_AUDIO_DUMP := true
 
@@ -49,9 +46,6 @@ LOCAL_C_INCLUDES += hardware/libhardware_legacy/include
 LOCAL_C_INCLUDES += frameworks/base/include
 LOCAL_C_INCLUDES += system/core/include
 
-LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
-
 include $(BUILD_SHARED_LIBRARY)
 
 ifeq ("x","y") # use default audio policy manager
@@ -83,9 +77,6 @@ endif
 
 LOCAL_C_INCLUDES += hardware/libhardware_legacy/audio
 
-LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
-
 include $(BUILD_SHARED_LIBRARY)
 endif
 
@@ -97,6 +88,3 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/
 LOCAL_SRC_FILES    := audio_policy.conf
 include $(BUILD_PREBUILT)
-
-endif #QC_PROP
-endif # not BUILD_TINY_ANDROID
